@@ -30,60 +30,61 @@ Agent安装：snmpd，作为被管理设备。
 
 1、创建虚拟机，分配manager和AGENT系统。
 
-![img](file:///C:\Users\ADMINI~1.DES\AppData\Local\Temp\msohtmlclip1\01\clip_image001.png)
+![img](./01/clip_image001.png)
 
-![img](file:///C:\Users\ADMINI~1.DES\AppData\Local\Temp\msohtmlclip1\01\clip_image002.png)
+![img](./01/clip_image002.png)
 
-![img](file:///C:\Users\ADMINI~1.DES\AppData\Local\Temp\msohtmlclip1\01\clip_image004.jpg)
+![img](./01/clip_image004.jpg)
 
 2、设置manager和agent的ip地址，manager：10.0.0.20，agent：10.0.0.10.互ping联通。
 
-![img](file:///C:\Users\ADMINI~1.DES\AppData\Local\Temp\msohtmlclip1\01\clip_image006.jpg)
+![img](./01/clip_image006.jpg)
 
-![img](file:///C:\Users\ADMINI~1.DES\AppData\Local\Temp\msohtmlclip1\01\clip_image008.jpg)
+![img](./01/clip_image008.jpg)
 
 3、省略安装snmp和snmpd包的步骤。
 
 4、验证代理服务器的身份，二者可以连通。
 
-![img](file:///C:\Users\ADMINI~1.DES\AppData\Local\Temp\msohtmlclip1\01\clip_image010.jpg)
+![img](./01/clip_image010.jpg)
 
-![img](file:///C:\Users\ADMINI~1.DES\AppData\Local\Temp\msohtmlclip1\01\clip_image012.jpg)
+![img](./01/clip_image012.jpg)
 
 5、设置普通用户帐户、密码。
 
-![img](file:///C:\Users\ADMINI~1.DES\AppData\Local\Temp\msohtmlclip1\01\clip_image013.png)
+![img](./01/clip_image013.png)
 
-![img](file:///C:\Users\ADMINI~1.DES\AppData\Local\Temp\msohtmlclip1\01\clip_image015.jpg)
+![img](./01/clip_image015.jpg)
 
-![img](file:///C:\Users\ADMINI~1.DES\AppData\Local\Temp\msohtmlclip1\01\clip_image017.jpg)
+![img](./01/clip_image017.jpg)
 
-![img](file:///C:\Users\ADMINI~1.DES\AppData\Local\Temp\msohtmlclip1\01\clip_image019.jpg)
+![img](./01/clip_image019.jpg)
 
 6、创建客户端配置文件，简化身份验证详细信息。需要输入SNMP命令，主机和命令参数即可获得信息。
 
-![img](file:///C:\Users\ADMINI~1.DES\AppData\Local\Temp\msohtmlclip1\01\clip_image020.png)
+![img](./01/clip_image020.png)
 
 7、删除临时用户。
 
-![img](file:///C:\Users\ADMINI~1.DES\AppData\Local\Temp\msohtmlclip1\01\clip_image022.jpg)
+![img](./01/clip_image022.jpg)
 
 8、使用SNMP进行通信。包括：获取系统所有的信息、取得系统总内存、取得IP信息等。
 
-![img](file:///C:\Users\ADMINI~1.DES\AppData\Local\Temp\msohtmlclip1\01\clip_image024.jpg)
+![img](./01/clip_image024.jpg)
 
-![img](file:///C:\Users\ADMINI~1.DES\AppData\Local\Temp\msohtmlclip1\01\clip_image026.jpg)
+![img](./01/clip_image026.jpg)
 
-![img](file:///C:\Users\ADMINI~1.DES\AppData\Local\Temp\msohtmlclip1\01\clip_image028.jpg)
+![img](./01/clip_image028.jpg)
 
 9、SNMP命令翻译。
 
-![img](file:///C:\Users\ADMINI~1.DES\AppData\Local\Temp\msohtmlclip1\01\clip_image030.jpg)![img](file:///C:\Users\ADMINI~1.DES\AppData\Local\Temp\msohtmlclip1\01\clip_image032.jpg)
+![img](./01/clip_image030.jpg)
+![img](./01/clip_image032.jpg)
 
 10、设置AGENT地区区域，方便管理。
 
-![img](file:///C:\Users\ADMINI~1.DES\AppData\Local\Temp\msohtmlclip1\01\clip_image034.jpg)![img](file:///C:\Users\ADMINI~1.DES\AppData\Local\Temp\msohtmlclip1\01\clip_image036.jpg)
+![img](./01/clip_image034.jpg)![img](./01/clip_image036.jpg)
 
 10、使用SNMP BULK请求与网络实体通信。获得系统所有信息。
 
-![img](file:///C:\Users\ADMINI~1.DES\AppData\Local\Temp\msohtmlclip1\01\clip_image038.jpg)
+![img](./01/clip_image038.jpg)
