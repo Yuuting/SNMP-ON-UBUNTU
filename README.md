@@ -1,9 +1,10 @@
 # SNMP-ON-UBUNTU
 在ubuntu系统中部署SNMP协议以及实践SNMP
-# SNMP网管协议实践
 
 ## 总体思路
+
 参考视频：https://www.youtube.com/watch?v=fIdDx1c50Dk
+
 1、因windows系统下有些不方便操作，因此下载了virtual box虚拟机仿真平台，克隆了两台搭载Ubuntu系统的Linux设备，一台充当SNMP Manager，一台充当SNMP Agent，进行SNMP网络监控和管理实验。
 
 2、安装SNMP守护程序和实用程序。
