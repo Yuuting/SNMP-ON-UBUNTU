@@ -25,6 +25,118 @@ Agent安装：snmpd，作为被管理设备。
 8、经过上述步骤配置完成，使用SNMP进行通信。包括：获取系统所有的信息、取得系统总内存、取得IP信息、取得系统用户数、查看系统信息、获取网卡信息、获取本地设备等信息。同时，可进行SNMP命令翻译。可进行节点地域分配记录。
 
 9、可删除临时创建的用户。
+## 完整代码
+
+```shell
+#manager device安装管理包和mib包
+sudo apt-get update
+sudo apt-get install snmp snmp-mibs-downloader
+```
+
+```shell
+#agent安装被管理包
+sudo apt-get update
+sudo apt-get install snmpd
+```
+
+```shell
+#manager device配置局域网 注意ens33为ipconfig查询所得
+sudo ifconfig ens33 down
+sudo ifconfig ens33 10.0.0.20 netmask 255.0.0.0
+```
+
+```shell
+#agent配置局域网 注意ens33为ipconfig查询所得
+sudo ifconfig ens33 down
+sudo ifconfig ens33 10.0.0.10 netmask 255.0.0.0
+#测试
+ping 10.0.0.20
+```
+
+```shell
+#manager device配置文件
+sudo nano /etc/snmp/snmp.conf
+#注释掉 mibs行
+```
+
+```shell
+#agent配置文件
+sudo nano /etc/snmp/snmpd.conf
+#添加如下代码
+agentAddress udp:161,udp6:[::1]:161
+createUser temp_user MD5 temp_password DES
+rwuser temp_user priv
+rwuser real_user priv
+#退出
+sudo service snmpd restart
+```
+
+```shell
+#manager device初步查询
+snmpget -u temp_user -l authPriv -a MD5 -x DES -A temp_password -X temp_password 10.0.0.10 1.3.6.1.2.1.1.1.0
+```
+
+```shell
+#与agent自身信息比对，若相同，则证明可以使用snmp
+uname -a
+```
+
+```shell
+#manager device创建用户，设置密码，用密码查询
+snmpusm -u temp_user -l authPriv -a MD5 -x DES -A temp_password -X temp_password 10.0.0.10 create real_user temp_user
+snmpusm -u real_user -l authPriv -a MD5 -x DES -A temp_password -X temp_password 10.0.0.10 passwd temp_password my_real_password
+snmpget -u real_user -l authPriv -a MD5 -x DES -A my_real_password -X my_real_password 10.0.0.10 sysUpTime.0
+#manager device更改配置文件，简化查询流程
+sudo nano /etc/snmp/snmp.conf
+defSecurityName real_user
+defsecurityLevel authPriv
+defAuth Type MD5
+defPriv Type DES
+defAuthPassphrase my_real_password 
+defPrivPassphrase my_real_password
+#manager device简化后的查询指令
+snmpget 10.0.0.10 sysUpTime.0
+```
+
+```shell
+#agent更改配置文件，准备删除临时用户
+sudo nano /etc/snmp/snmpd.conf
+agentAddress udp:161,udp6:[::1]:161
+#createUser temp_user MD5 temp_password DES
+#rwuser temp_user priv
+#rwuser real_user priv
+sudo service snmpd restart
+```
+
+```shell
+#manager device删除临时用户
+snmpusm 10.0.0.10 delete temp_user
+#manager device各种命令继续查询
+snmpget 10.0.0.10 1.3.6.1.2.1.1.1.0
+snmpget 10.0.0.10 sysDescr.0
+snmpgetnext 10.0.0.10 sysDescr.0
+snmpgetnext 10.0.0.10 sysObjectID.0
+snmpwalk 10.0.0.10
+snmpwalk 10.0.0.10 . | grep -i uptime
+snmptranslate  1.3.6.1.2.1.1.1.0
+snmptranslate -On HOST-RESOURCES-MIB::hrSystemUptime.O
+snmptranslate -Tp 1.3.6.1.2.1.1.1.0
+```
+
+```shell
+#agent更改配置文件
+sudo nano /etc/snmp/snmpd.conf
+#注释掉 #sysLocation Sitting on the Dock of the Bay
+```
+
+```shell
+#manager device设置被管agent系统地区并查出
+snmpset 10.0.0.10 sysLocation.O s "Earth"
+snmpset 10.0.0.10 sysLocation.O= "New York"
+snmpget 10.0.0.10 sysLocation.O
+snmpbulkget 10.0.0.10 system
+```
+
 
 ## 分步进行
 
