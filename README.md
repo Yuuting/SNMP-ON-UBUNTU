@@ -6,13 +6,13 @@
 
 1、因windows系统下有些不方便操作，因此下载了virtual box虚拟机仿真平台，克隆了两台搭载Ubuntu系统的Linux设备，一台充当SNMP Manager，一台充当SNMP Agent，进行SNMP网络监控和管理实验。
 
-2、创建一个两台虚拟机共用的局域网，分别给两台虚拟机赋予同一网段的IP地址。两台机器互ping，可以接通。
-
-3、安装SNMP守护程序和实用程序。
+2、安装SNMP守护程序和实用程序。
 
 Manager安装：snmp和snmp-mibs-downloader。snmp软件包提供了用于向代理发出SNMP请求的命令行工具集合。该snmp-mibs-downloader软件包将帮助安装和管理管理信息库（MIB）文件，该文件可跟踪网络对象。
 
 Agent安装：snmpd，作为被管理设备。
+
+3、创建一个两台虚拟机共用的局域网，分别给两台虚拟机赋予同一网段的IP地址。两台机器互ping，可以接通。
 
 4、配置SNMP管理器服务器，配置SNMP代理服务器（创建用户，开放161端口）。
 
@@ -36,13 +36,13 @@ Agent安装：snmpd，作为被管理设备。
 
 ![img](./01/clip_image004.jpg)
 
-2、设置manager和agent的ip地址，manager：10.0.0.20，agent：10.0.0.10.互ping联通。
+2、安装snmp和snmpd包。
+
+3、设置manager和agent的ip地址，manager：10.0.0.20，agent：10.0.0.10.互ping联通。
 
 ![img](./01/clip_image006.jpg)
 
 ![img](./01/clip_image008.jpg)
-
-3、省略安装snmp和snmpd包的步骤。
 
 4、验证代理服务器的身份，二者可以连通。
 
