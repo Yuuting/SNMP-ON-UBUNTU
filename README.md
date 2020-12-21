@@ -88,3 +88,20 @@ Agent安装：snmpd，作为被管理设备。
 10、使用SNMP BULK请求与网络实体通信。获得系统所有信息。
 
 ![img](./01/clip_image038.jpg)
+## 一些SNMP命令实践
+
+![img](./SNMP网管协议实践.assets/clip_image001.png)
+
+![img](./SNMP网管协议实践.assets/clip_image002.png)
+
+![img](./SNMP网管协议实践.assets/clip_image004.jpg)
+
+![img](./SNMP网管协议实践.assets/clip_image006.jpg)
+
+![img](./SNMP网管协议实践.assets/clip_image008.jpg)
+
+![img](SNMP%E7%BD%91%E7%AE%A1%E5%8D%8F%E8%AE%AE%E5%AE%9E%E8%B7%B5.assets/clip_image010.jpg)
+
+![img](SNMP%E7%BD%91%E7%AE%A1%E5%8D%8F%E8%AE%AE%E5%AE%9E%E8%B7%B5.assets/clip_image012.jpg)
+
+![img](SNMP%E7%BD%91%E7%AE%A1%E5%8D%8F%E8%AE%AE%E5%AE%9E%E8%B7%B5.assets/clip_image014.jpg)
